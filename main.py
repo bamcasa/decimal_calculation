@@ -1,41 +1,48 @@
 import numpy as np
 
-num1 = "12345678"
-num2 = "1235678900"
+def plus(num1, num2):
+    li2 = list(map(int, num2))
+    li1 = list(map(int, num1))
 
-li1 = list(map(int, num1))
-li2 = list(map(int, num2))
-
-if len(li1) >= len(li2):
-    length = len(li1) + 1
-    for i in range(length - len(li2)):
-        li2.insert(0, 0)
-    li1.insert(0,0)
-else:
-    length = len(li2) + 1
-    for i in range(length - len(li1)):
+    if len(li1) >= len(li2):
+        length = len(li1) + 1
+        for i in range(length - len(li2)):
+            li2.insert(0, 0)
         li1.insert(0, 0)
-    li2.insert(0,0)
-
-arr1 = np.array(li1)
-arr2 = np.array(li2)
-print(arr1)
-print(arr2)
-arr3 = np.zeros(length, dtype=np.int8)
-
-result = np.zeros(length, dtype=np.int8)
-
-arr1 = np.flip(arr1)
-arr2 = np.flip(arr2)
-
-for i in range(length):
-    sum = arr1[i] + arr2[i] + arr3[i]
-    if sum >= 10:
-        arr3[i + 1] += 1
-        result[i] = sum % 10
     else:
-        result[i] += sum
+        length = len(li2) + 1
+        for i in range(length - len(li1)):
+            li1.insert(0, 0)
+        li2.insert(0, 0)
 
-result = np.flip(result)
+    arr1 = np.array(li1)
+    arr2 = np.array(li2)
+    # print(arr1)
+    # print(arr2)
+    arr3 = np.zeros(length, dtype=np.int8)
+
+    result = np.zeros(length, dtype=np.int8)
+
+    arr1 = np.flip(arr1)
+    arr2 = np.flip(arr2)
+
+    for i in range(length):
+        sum = arr1[i] + arr2[i] + arr3[i]
+        if sum >= 10:
+            arr3[i + 1] += 1
+            result[i] = sum % 10
+        else:
+            result[i] += sum
+
+    result = np.flip(result)
+    # print(result)
+    return result
+
+
+num1 = "64346547673527"
+num2 = "41984723"
+
+result = plus(num1, num2)
 
 print(result)
+
