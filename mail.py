@@ -2,7 +2,6 @@ import smtplib
 from datetime import datetime
 from email.mime.text import MIMEText
 from decimal_cal import *
-from numba import jit
 
 s = smtplib.SMTP('smtp.gmail.com', 587)
 
