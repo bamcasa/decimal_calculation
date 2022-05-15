@@ -108,11 +108,11 @@ def mod(num1,num2):
         if n[0] == "-":
             break
         num1 = n
+
     return num1
 
-num1 = "123"
-num2 = "11"
-
-result = mod(num1, num2)
-# result = list_to_str(result)
-print(result)
+def power(num1,num2):
+    sum = "1"
+    for i in range(int(num2)):
+        sum = multiply(sum, num1)
+    return sum
