@@ -102,10 +102,17 @@ def divide(num1,num2):
             break
         i = add(i,"1")
     return i
+def mod(num1,num2):
+    while True:
+        n = subtract(num1,num2)
+        if n[0] == "-":
+            break
+        num1 = n
+    return num1
 
-num1 = "100"
-num2 = "3"
+num1 = "123"
+num2 = "11"
 
-result = divide(num1, num2)
+result = mod(num1, num2)
 # result = list_to_str(result)
 print(result)
