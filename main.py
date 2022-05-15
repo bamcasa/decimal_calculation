@@ -7,7 +7,7 @@ def list_to_str(result):
     return result
 
 
-def trans_complement(arr,length):
+def trans_complement(arr, length):
     arr = list(map(int, arr))
     for i in range(length - len(arr)):
         arr.insert(0, 0)
@@ -15,11 +15,11 @@ def trans_complement(arr,length):
     for i in range(length):
         arr[i] = 9 - arr[i]
     arr = list_to_str(arr)
-    arr = plus(arr, "1")
+    arr = add(arr, "1")
     return arr
 
 
-def plus(num1, num2):
+def add(num1, num2):
     li2 = list(map(int, num2))
     li1 = list(map(int, num1))
 
@@ -59,7 +59,7 @@ def plus(num1, num2):
     return result
 
 
-def minus(num1, num2):
+def subtract(num1, num2):
     li2 = list(map(int, num2))
     li1 = list(map(int, num1))
     if len(li1) >= len(li2):
@@ -69,28 +69,43 @@ def minus(num1, num2):
 
     arr1 = np.array(li1)
     arr2 = np.array(li2)
-    trans_arr = trans_complement(arr2,length)
+    trans_arr = trans_complement(arr2, length)
     # print(num1 ,trans_arr)
-    result = plus(num1, trans_arr)
+    result = add(num1, trans_arr)
     # print(length)
     # print(len(result))
     # print(len(li1),len(li2))
     #
     # print("변환X " + result)
     # print("변환O " + trans_complement(result, length))
-    if length == len(result) - 1: #양수
+    if length == len(result) - 1:  # 양수
         result = result[-length:]
-        print("양수")
-    elif length >= len(result): #음수
-        result = "-" + trans_complement(result,length)
-        print("음수")
+        # print("양수")
+    elif length >= len(result):  # 음수
+        result = "-" + trans_complement(result, length)
+        # print("음수")
 
     return result
 
 
-num1 = "1"
-num2 = "881"
+def multiply(num1, num2):
+    sum = "0"
+    for i in range(int(num2)):
+        sum = add(sum, num1)
+    return sum
 
-result = minus(num1, num2)
+def divide(num1,num2):
+    i = "0"
+    while True:
+        num1 = subtract(num1,num2)
+        if num1[0] == "-":
+            break
+        i = add(i,"1")
+    return i
+
+num1 = "100"
+num2 = "3"
+
+result = divide(num1, num2)
 # result = list_to_str(result)
 print(result)
