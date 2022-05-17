@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def list_to_str(result):
     result = ' '.join(map(str, result)).replace(" ", "")
     result = result.lstrip('0')
@@ -97,9 +96,9 @@ def multiply(num1, num2):
 def divide(num1,num2):
     i = "0"
     while True:
-        num1 = subtract(num1,num2)
         if num1[0] == "-":
             break
+        num1 = subtract(num1,num2)
         i = add(i,"1")
     return i
 def mod(num1,num2):

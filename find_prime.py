@@ -1,23 +1,24 @@
 from decimal_cal import *
 
-def is_prime(x):
+def is_mersenn_prime(p):
+    num = power("2", p)
+    num = subtract(num, "1")
+    s = "4"
     i = "2"
     while True:
-        if i == x:
+        if i == p:
             break
-        if list_to_str(mod(x, i)) == "":
-            # print("ang")
-            return False
+        s = mod(subtract(power(s,"2"),"2"),num)
+        i = add(i,"1")
+    s = list_to_str(s)
+    return s == ""
 
-        i = add(i, "1")
-    return True
-
-i = "2"
+i = "3"
 while True:
-    if i == "100":
-        break
-    num = power("2", i)
-    num = subtract(num, "1")
-    if is_prime(num):
-        print(f"{num}, 2^{i}-1")
+    # if i == "6":
+    #     break
+    if is_mersenn_prime(i):
+        num = power("2", i)
+        num = subtract(num, "1")
+        print(f"{num}, 2^{i}-1, n = {i}")
     i = add(i, "1")
