@@ -3,11 +3,16 @@ from datetime import datetime
 from email.mime.text import MIMEText
 from decimal_cal import *
 
+f = open("token.txt", 'r')
+token = f.read()
+print(token)
+f.close()
 
 def send_mail(title,text):
+    global token
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login('combeeh123@gmail.com', 'rcmdnfjognwfdcgs')
+    s.login('combeeh123@gmail.com', token)
     msg = MIMEText(text)
     msg['Subject'] = f"{title} {datetime.today().hour}시 {datetime.today().minute}분 {datetime.today().second}초"
     s.sendmail("combeeh123@gmail.com", "combeesang@gmail.com", msg.as_string())
@@ -32,7 +37,7 @@ i = "3"
 while True:
     if i == "100":
         break
-
+    print(f"n = {i}일때 시작","")
     send_mail(f"n = {i}일때 시작","")
 
     if is_mersenn_prime(i):
